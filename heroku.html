@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>heroku holder</title>
+  </head>
+  <body>
+    <small>Just type you heroku app url below and a query will be send there every 15 min to keep it awake. #shit_heroku </small>
+      <input type="text" id="hrk_link" placeholder="Type the heroku website URL... " />
+    <!-- page content -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            setInterval(function(){
+                var url = $('#hrk_link').val();
+                $.get(url).done(function(data){
+                    console.log('Query to '+ url + ' DONE')
+                }).fail(function(error){
+                    console.log('Query to '+ url + ' FAIL')
+                });
+            },900000) // 15 min here
+        })
+    </script>
+    
+  </body>
+</html>
